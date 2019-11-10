@@ -1,0 +1,2 @@
+# timeLine
+PyQt TimeSlider widget
