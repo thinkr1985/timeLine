@@ -33,8 +33,8 @@ class PlayBarButton(QtWidgets.QPushButton):
         super(PlayBarButton, self).__init__(parent=parent)
         self.type_ = type_
         self.setCursor(QtCore.Qt.PointingHandCursor)
-        self.setFixedHeight(35)
-        self.setFixedWidth(35)
+        self.setFixedHeight(30)
+        self.setFixedWidth(30)
         self.playIcon = QtGui.QIcon(variables.PLAY_ICON)
         self.pauseIcon = QtGui.QIcon(variables.PAUSE_ICON)
         self.stopIcon = QtGui.QIcon(variables.STOP_ICON)
@@ -42,19 +42,17 @@ class PlayBarButton(QtWidgets.QPushButton):
         self.forwardIcon = QtGui.QIcon(variables.FORWARD_ICON)
         self.prevKeyIcon = QtGui.QIcon(variables.PREV_KEY_ICON)
         self.nextKeyIcon = QtGui.QIcon(variables.NEXT_KEY_ICON)
-        self.setIconSize(QtCore.QSize(35, 35))
+        self.setIconSize(QtCore.QSize(30, 30))
         self.set_icon()
         self.setStyleSheet("""
                             PlayBarButton{  
                                             color: white;
-                                            border-width: 1px;
+                                            border: 2px solid grey;
                                             border-radius: 10px;
                                             background: transparent;
-                                            padding: 4px;
                                          }
                             PlayBarButton:hover{
-                                                border-color: black;
-                                                border-style: inset;
+                                                border: 2px solid black;
                                                 }
                             PlayBarButton:pressed{
                                                     background: silver;   
