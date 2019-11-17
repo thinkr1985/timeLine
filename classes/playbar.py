@@ -1,11 +1,17 @@
 """Creating a playbar widget"""
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from classes import variables
+from classes import variables, slider
 
 
 class PlayBar(QtWidgets.QWidget):
+    """Creating PlayBar widget by inheriting QWidget"""
     def __init__(self, parent=None, timeslider=None):
+        """initializing PlayBar class
+        Args:
+            parent (QtWidgets.QWidget): Parent widget of this class.
+            timeslider (slider.Slider): Slider widget instance.
+        """
         super(PlayBar, self).__init__(parent=parent)
         self.timeSlider = timeslider
         self.layout = QtWidgets.QHBoxLayout()
@@ -19,6 +25,7 @@ class PlayBar(QtWidgets.QWidget):
         self.forwardButton = PlayBarButton(type_="forward")
         self.prevButton = PlayBarButton(type_="previous")
         self.nextButton = PlayBarButton(type_="next")
+        # adding buttons to layout
         self.layout.addWidget(self.playButton)
         self.layout.addWidget(self.pauseButton)
         self.layout.addWidget(self.stopButton)
@@ -29,7 +36,13 @@ class PlayBar(QtWidgets.QWidget):
 
 
 class PlayBarButton(QtWidgets.QPushButton):
+    """Creating PlayBarButton by inheriting QPushButton"""
     def __init__(self, parent=None, type_=None):
+        """Initializing PlayBarButton class.
+        Args:
+            parent (QtWidgets.QWidget): Parent widget of this class.
+            type_ (str): Type of the button.
+        """
         super(PlayBarButton, self).__init__(parent=parent)
         self.type_ = type_
         self.setCursor(QtCore.Qt.PointingHandCursor)
@@ -47,12 +60,12 @@ class PlayBarButton(QtWidgets.QPushButton):
         self.setStyleSheet("""
                             PlayBarButton{  
                                             color: white;
-                                            border: 2px solid grey;
+                                            border: 1px solid grey;
                                             border-radius: 10px;
                                             background: transparent;
                                          }
                             PlayBarButton:hover{
-                                                border: 2px solid black;
+                                                border: 1px solid black;
                                                 }
                             PlayBarButton:pressed{
                                                     background: silver;   
@@ -61,6 +74,10 @@ class PlayBarButton(QtWidgets.QPushButton):
         """)
 
     def set_icon(self):
+        """This method sets icon of this widget by defined type.
+        Returns:
+            (None): Returns None.
+        """
         if self.type_ == "play":
             self.setIcon(self.playIcon)
             self.setToolTip("Play")
