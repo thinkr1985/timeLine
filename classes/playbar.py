@@ -1,19 +1,21 @@
 """Creating a playbar widget"""
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from classes import variables, slider
+from classes import variables, scene
 
 
 class PlayBar(QtWidgets.QWidget):
     """Creating PlayBar widget by inheriting QWidget"""
-    def __init__(self, parent=None, timeslider=None):
+    def __init__(self, parent=None, framerange=None, timelineScene=None):
         """initializing PlayBar class
         Args:
             parent (QtWidgets.QWidget): Parent widget of this class.
-            timeslider (slider.Slider): Slider widget instance.
+            framerange (list): List containing start and end frames integers.
+            timelineScene (scene.Scene): Time line scene.
         """
         super(PlayBar, self).__init__(parent=parent)
-        self.timeSlider = timeslider
+        self.scene = timelineScene
+        self.frameRange = framerange
         self.layout = QtWidgets.QHBoxLayout()
         self.setLayout(self.layout)
         self.layout.setContentsMargins(0, 0, 0, 0)
@@ -33,6 +35,11 @@ class PlayBar(QtWidgets.QWidget):
         self.layout.addWidget(self.forwardButton)
         self.layout.addWidget(self.prevButton)
         self.layout.addWidget(self.nextButton)
+
+        # connecting widgets to their functions
+
+    def connect_(self):
+        pass
 
 
 class PlayBarButton(QtWidgets.QPushButton):
@@ -68,7 +75,8 @@ class PlayBarButton(QtWidgets.QPushButton):
                                                 border: 1px solid black;
                                                 }
                             PlayBarButton:pressed{
-                                                    background: silver;   
+                                                    background: silver;
+                                                    border: 1px silver;   
                                                  }
                                                  
         """)
